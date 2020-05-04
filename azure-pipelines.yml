@@ -29,4 +29,4 @@ steps:
 - task: CmdLine@2
   displayName: 'Publish the nuget package'
   inputs:
-    script: 'dotnet nuget push $(Build.ArtifactStagingDirectory)/DomainDrivenDesign.DomainObjects.0.0.1.nupkg -k oy2mqb4puyhwjm5xp22aot6rbdngxd5udkh2lfls6kfgwm -s https://api.nuget.org/v3/index.json'
+    script: 'dotnet nuget push $(Build.ArtifactStagingDirectory)/DomainDrivenDesign.DomainObjects.0.0.1.nupkg -k $(nugetkey) -s https://api.nuget.org/v3/index.json'
