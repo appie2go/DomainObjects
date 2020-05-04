@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <PackageId>DomainDrivenDesign.DomainObjects</PackageId>
-    <Version>0.0.6</Version>
+    <Version>0.0.7</Version>
     <Authors>Albert Starreveld</Authors>
     <Company>Albert Starreveld</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -11,5 +11,12 @@
     <RepositoryUrl>https://github.com/appie2go/domainobjects</RepositoryUrl>
     <PackageTags>DomainDrivenDesign</PackageTags>
     <Description>A package that contains the base classes for Aggregates, Entities and ValueTypes.</Description>
+    <PackageIcon>ddd.jpg</PackageIcon>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\ddd.jpg">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 </Project>
