@@ -1,0 +1,25 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/*.csproj'
+    versioningScheme: 'off'
+
+- task: CmdLine@2
+  inputs:
+    script: 'ls $(Build.ArtifactStagingDirectory)'
+
+- task: CmdLine@2
+  inputs:
+    script: 'dotnet nuget push $(Build.ArtifactStagingDirectory)/DomainObjects.1.0.0.nupkg -k oy2n2tbmio5advuj6opqsvejkyolqlzejigs6odqwteysy -s https://api.nuget.org/v3/index.json'
