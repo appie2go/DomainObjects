@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DomainObjects
+namespace DomainDrivenDesign.DomainObjects
 {
     public sealed class Id<T> where T : Entity<T>
     {

@@ -1,7 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
+    <PackageId>DomainDrivenDesign.DomainObjects</PackageId>
+    <Version>0.0.1</Version>
+    <Authors>Albert Starreveld</Authors>
+    <Company>Albert Starreveld</Company>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-
 </Project>
