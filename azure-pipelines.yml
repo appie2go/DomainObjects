@@ -24,10 +24,4 @@ steps:
 - task: CmdLine@2
   displayName: 'Publish the nuget package'
   inputs:
-    script: |
-      $projectContents = cat DomainObjects/DomainObjects.csproj
-            $packageVersion = $projectContents -match '\d.\d.\d' -replace '(.*)(\d.\d.\d)(.*)', '$2'
-            $packageLocation = '../a/DomainDrivenDesign.DomainObjects.$packageVersion.nupkg'
-            echo $packageLocation
-            dotnet nuget push $packageLocation -k $(nugetkey) -s https://api.nuget.org/v3/index.json'
-      
+    script: 'cat DomainObjects/DomainObjects.csproj'   
