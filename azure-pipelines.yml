@@ -24,4 +24,6 @@ steps:
 - task: CmdLine@2
   displayName: 'Publish the nuget package'
   inputs:
-    script: 'cat DomainObjects/DomainObjects.csproj'   
+    script: |
+      $projectContents = cat DomainObjects/DomainObjects.csproj
+      $projectContents -match '\d.\d.\d' -replace '(.*)(\d.\d.\d)(.*)', '$2'
