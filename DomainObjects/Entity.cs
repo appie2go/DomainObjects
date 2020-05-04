@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DomainDrivenDesign.DomainObjects
 {
@@ -34,12 +32,6 @@ namespace DomainDrivenDesign.DomainObjects
         {
             return this == obj as Entity<T>;
         }
-
-        public override int GetHashCode()
-        {
-            return Id.GetHashCode();
-        }
-
 #endregion
     }
 }

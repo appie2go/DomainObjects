@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainObjects", "DomainObjects\DomainObjects.csproj", "{F224A815-CF7D-452A-915F-B8A5B60EF1C2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainObjects.Test", "DomainObjects.Test\DomainObjects.Test.csproj", "{DFF2C119-0075-4856-81FC-9DBF5E08B63D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F224A815-CF7D-452A-915F-B8A5B60EF1C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F224A815-CF7D-452A-915F-B8A5B60EF1C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F224A815-CF7D-452A-915F-B8A5B60EF1C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFF2C119-0075-4856-81FC-9DBF5E08B63D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFF2C119-0075-4856-81FC-9DBF5E08B63D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFF2C119-0075-4856-81FC-9DBF5E08B63D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFF2C119-0075-4856-81FC-9DBF5E08B63D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

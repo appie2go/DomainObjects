@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DomainDrivenDesign.DomainObjects
 {
@@ -94,6 +92,31 @@ namespace DomainDrivenDesign.DomainObjects
     public class Value<T1, T2, T3, T4, T5> : Value<Tuple<T1, T2, T3, T4, T5>>
     {
         protected Value(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5) : base(new Tuple<T1, T2, T3, T4, T5>(value1, value2, value3, value4, value5))
+        {
+        }
+
+        public override string ToString()
+        {
+            return GetType().ToString();
+        }
+    }
+
+    public class Value<T1, T2, T3, T4, T5, T6> : Value<Tuple<T1, T2, T3, T4, T5, T6>>
+    {
+        protected Value(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6) : base(new Tuple<T1, T2, T3, T4, T5, T6>(value1, value2, value3, value4, value5, value6))
+        {
+        }
+
+        public override string ToString()
+        {
+            return GetType().ToString();
+        }
+    }
+
+
+    public class Value<T1, T2, T3, T4, T5, T6, T7> : Value<Tuple<T1, T2, T3, T4, T5, T6, T7>>
+    {
+        protected Value(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7) : base(new Tuple<T1, T2, T3, T4, T5, T6, T7>(value1, value2, value3, value4, value5, value6, value7))
         {
         }
 

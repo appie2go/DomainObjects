@@ -7,5 +7,10 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>DomainDrivenDesign.DomainObjects</RootNamespace>
+    <PackageProjectUrl>https://github.com/appie2go/domainobjects</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/appie2go/domainobjects</RepositoryUrl>
+    <PackageTags>DomainDrivenDesign</PackageTags>
+    <AssemblyVersion>0.0.5.0</AssemblyVersion>
+    <FileVersion>0.0.5.0</FileVersion>
   </PropertyGroup>
 </Project>

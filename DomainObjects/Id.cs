@@ -1,14 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DomainDrivenDesign.DomainObjects
 {
-    public sealed class Id<T> where T : Entity<T>
+    public sealed class Id<T> : Value<Guid> where T : Entity<T>
     {
         private readonly Guid _id;
 
-        public Id(Guid id)
+        public static Id<T> CreateNew()
+        {
+            return new Id<T>(Guid.NewGuid());
+        }
+
+        public Id(Guid id) : base(id)
         {
             _id = id;
 
@@ -18,10 +21,6 @@ namespace DomainDrivenDesign.DomainObjects
             }
         }
 
-        public static Id<T> CreateNew()
-        {
-            return new Id<T>(Guid.NewGuid());
-        }
 
         public override string ToString()
         {
@@ -32,35 +31,5 @@ namespace DomainDrivenDesign.DomainObjects
         {
             return _id;
         }
-
-
-#region Equality
-
-        public static bool operator ==(Id<T> left, Id<T> right)
-        {
-            return left?._id == right?._id;
-        }
-
-        public static bool operator !=(Id<T> left, Id<T> right)
-        {
-            return !(left == right);
-        }
-
-        public bool Equals(Id<T> other)
-        {
-            return this == other;
-        }
-
-        public override bool Equals(object obj)
-        {
-            return this == obj as Id<T>;
-        }
-
-        public override int GetHashCode()
-        {
-            return _id.GetHashCode();
-        }
-
-#endregion
     }
 }
