@@ -16,10 +16,6 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
-    versioningScheme: 'ByPrereleaseNumber'
-    majorVersion: '0'
-    minorVersion: '0'
-    patchVersion: '$(Build.BuildNumber)'
 
 - task: CmdLine@2
   displayName: 'List contents of artifacts staging directory'
@@ -29,4 +25,4 @@ steps:
 - task: CmdLine@2
   displayName: 'Publish the nuget package'
   inputs:
-    script: 'dotnet nuget push $(Build.ArtifactStagingDirectory)/DomainDrivenDesign.DomainObjects.0.0.1.nupkg -k $(nugetkey) -s https://api.nuget.org/v3/index.json'
+    script: 'dotnet nuget push $(Build.ArtifactStagingDirectory)/DomainDrivenDesign.DomainObjects.0.0.2.nupkg -k $(nugetkey) -s https://api.nuget.org/v3/index.json'
