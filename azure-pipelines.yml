@@ -18,4 +18,4 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'dotnet nuget push **/*.nupkg -k oy2n2tbmio5advuj6opqsvejkyolqlzejigs6odqwteysy -s https://api.nuget.org/v3/index.json'
+    script: 'dotnet nuget push $(Build.ArtifactStagingDirectory)/DomainObjects.nupkg -k oy2n2tbmio5advuj6opqsvejkyolqlzejigs6odqwteysy -s https://api.nuget.org/v3/index.json'
