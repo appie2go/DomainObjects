@@ -9,7 +9,7 @@ namespace DomainObjects
     {
         private readonly T _value;
 
-        public Value(T value)
+        protected Value(T value)
         {
             _value = value;
         }
@@ -57,7 +57,7 @@ namespace DomainObjects
 
     public class Value<T1, T2> : Value<Tuple<T1, T2>>
     {
-        public Value(T1 value1, T2 value2) : base(new Tuple<T1, T2>(value1, value2))
+        protected Value(T1 value1, T2 value2) : base(new Tuple<T1, T2>(value1, value2))
         {
         }
 
@@ -69,9 +69,10 @@ namespace DomainObjects
 
     public class Value<T1, T2, T3> : Value<Tuple<T1, T2, T3>>
     {
-        public Value(T1 value1, T2 value2, T3 value3) : base(new Tuple<T1, T2, T3>(value1, value2, value3))
+        protected Value(T1 value1, T2 value2, T3 value3) : base(new Tuple<T1, T2, T3>(value1, value2, value3))
         {
         }
+
         public override string ToString()
         {
             return GetType().ToString();
@@ -80,9 +81,10 @@ namespace DomainObjects
 
     public class Value<T1, T2, T3, T4> : Value<Tuple<T1, T2, T3, T4>>
     {
-        public Value(T1 value1, T2 value2, T3 value3, T4 value4) : base(new Tuple<T1, T2, T3, T4>(value1, value2, value3, value4))
+        protected Value(T1 value1, T2 value2, T3 value3, T4 value4) : base(new Tuple<T1, T2, T3, T4>(value1, value2, value3, value4))
         {
         }
+
         public override string ToString()
         {
             return GetType().ToString();
@@ -91,9 +93,10 @@ namespace DomainObjects
 
     public class Value<T1, T2, T3, T4, T5> : Value<Tuple<T1, T2, T3, T4, T5>>
     {
-        public Value(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5) : base(new Tuple<T1, T2, T3, T4, T5>(value1, value2, value3, value4, value5))
+        protected Value(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5) : base(new Tuple<T1, T2, T3, T4, T5>(value1, value2, value3, value4, value5))
         {
         }
+
         public override string ToString()
         {
             return GetType().ToString();
