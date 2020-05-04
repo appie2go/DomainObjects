@@ -12,6 +12,7 @@ pool:
 steps:
 
 - task: DotNetCoreCLI@2
+  displayName: 'Create .nupkg file'
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
@@ -21,9 +22,11 @@ steps:
     patchVersion: '$(Build.BuildNumber)'
 
 - task: CmdLine@2
+  displayName: 'List contents of artifacts staging directory'
   inputs:
     script: 'ls $(Build.ArtifactStagingDirectory)'
 
 - task: CmdLine@2
+  displayName: 'Publish the nuget package'
   inputs:
     script: 'dotnet nuget push $(Build.ArtifactStagingDirectory)/DomainDrivenDesign.DomainObjects.0.0.1.nupkg -k oy2n2tbmio5advuj6opqsvejkyolqlzejigs6odqwteysy -s https://api.nuget.org/v3/index.json'
