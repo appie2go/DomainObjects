@@ -27,4 +27,4 @@ steps:
     script: |
       $projectContents = cat ./DomainObjects/DomainObjects.csproj
       $packageVersion = $projectContents -match '\d.\d.\d' -replace '(.*)(\d.\d.\d)(.*)', '$2'
-      dotnet nuget push $(Build.ArtifactStagingDirectory)/DomainDrivenDesign.DomainObjects.$packageVersion.nupkg -k $(nugetkey) -s https://api.nuget.org/v3/index.json'
+      dotnet nuget push '../a/DomainDrivenDesign.DomainObjects.$packageVersion.nupkg' -k $(nugetkey) -s https://api.nuget.org/v3/index.json'
