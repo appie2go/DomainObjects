@@ -28,4 +28,4 @@ steps:
       $projectContents = cat DomainObjects/DomainObjects.csproj
       $packageVersion = $projectContents -match '\d.\d.\d' -replace '(.*)(\d.\d.\d)(.*)', '$2'
       $packageLocation = '$(Build.ArtifactStagingDirectory)/DomainDrivenDesign.DomainObjects.' + $packageVersion + '.nupkg'
-      write-host $packageLocation
+      dotnet nuget push $packageLocation -k $(nugetkey) -s https://api.nuget.org/v3/index.json
