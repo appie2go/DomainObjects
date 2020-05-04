@@ -17,23 +17,14 @@ steps:
     script: 'dotnet pack -o $(Build.ArtifactStagingDirectory)'
 
 - task: CmdLine@2
-  displayName: 'Get the version number'
-  inputs:
-    script: |
-      # $projectContents = cat ./DomainObjects/DomainObjects.csproj
-      # $PACKAGE_VERSION = $projectContents -match '\d.\d.\d' -replace '(.*)(\d.\d.\d)(.*)', '$2'
-
-- task: CmdLine@2
   displayName: 'List contents of artifacts staging directory'
   inputs:
     script: 'ls $(Build.ArtifactStagingDirectory)'
-
+    
 - task: CmdLine@2
-  displayName: 'List contents of artifacts staging directory'
+  displayName: 'Publish the nuget package'
   inputs:
-    script: 'echo $PACKAGE_VERSION'
-
-#- task: CmdLine@2
-#  displayName: 'Publish the nuget package'
-#  inputs:
-#    script: 'dotnet nuget push $(Build.ArtifactStagingDirectory)/DomainDrivenDesign.DomainObjects.0.0.2.nupkg -k $(nugetkey) -s https://api.nuget.org/v3/index.json'
+    script: |
+      # $projectContents = cat ./DomainObjects/DomainObjects.csproj
+      # $packageVersion = $projectContents -match '\d.\d.\d' -replace '(.*)(\d.\d.\d)(.*)', '$2'
+      # dotnet nuget push $(Build.ArtifactStagingDirectory)/DomainDrivenDesign.DomainObjects.$packageVersion.nupkg -k $(nugetkey) -s https://api.nuget.org/v3/index.json'
