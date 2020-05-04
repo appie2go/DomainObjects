@@ -26,4 +26,4 @@ steps:
   inputs:
     script: |
       $projectContents = cat DomainObjects/DomainObjects.csproj
-      $projectContents -match '\d.\d.\d' -replace '(.*)(\d.\d.\d)(.*)', '$2'
+      $projectContents
