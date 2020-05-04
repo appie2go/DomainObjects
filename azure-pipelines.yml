@@ -10,6 +10,11 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+
+- task: CmdLine@2
+  inputs:
+    script: 'echo $(Build.BuildNumber)'
+
 - task: DotNetCoreCLI@2
   inputs:
     command: 'pack'
