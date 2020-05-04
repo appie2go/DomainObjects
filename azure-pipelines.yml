@@ -16,9 +16,6 @@ steps:
     packagesToPack: '**/*.csproj'
     versioningScheme: 'off'
 
-- task: DotNetCoreCLI@2
+- task: CmdLine@2
   inputs:
-    command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-    nuGetFeedType: 'external'
-    publishFeedCredentials: 'DomainObjects Nuget.org'
+    script: 'dotnet nuget push **/*.nupkg -k oy2n2tbmio5advuj6opqsvejkyolqlzejigs6odqwteysy -s https://api.nuget.org/v3/index.json'
