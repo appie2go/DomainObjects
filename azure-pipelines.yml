@@ -11,11 +11,10 @@ pool:
 
 steps:
 
-- task: DotNetCoreCLI@2
+- task: CmdLine@2
   displayName: 'Create .nupkg file'
   inputs:
-    command: 'pack'
-    packagesToPack: '**/*.csproj'
+    script: 'dotnet pack -o $(Build.ArtifactStagingDirectory)'
 
 - task: CmdLine@2
   displayName: 'List contents of artifacts staging directory'
