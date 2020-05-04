@@ -21,7 +21,7 @@ steps:
   inputs:
     script: |
       # $projectContents = cat ./DomainObjects/DomainObjects.csproj
-      # $env:PACKAGE_VERSION = $projectContents -match '\d.\d.\d' -replace '(.*)(\d.\d.\d)(.*)', '$2'
+      # $PACKAGE_VERSION = $projectContents -match '\d.\d.\d' -replace '(.*)(\d.\d.\d)(.*)', '$2'
 
 - task: CmdLine@2
   displayName: 'List contents of artifacts staging directory'
@@ -31,7 +31,7 @@ steps:
 - task: CmdLine@2
   displayName: 'List contents of artifacts staging directory'
   inputs:
-    script: 'echo $(PACKAGE_VERSION)'
+    script: 'echo $PACKAGE_VERSION'
 
 #- task: CmdLine@2
 #  displayName: 'Publish the nuget package'
