@@ -15,8 +15,10 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
-    versioningScheme: 'byEnvVar'
-    versionEnvVar: '0.$(Build.BuildNumber)'
+    versioningScheme: 'ByPrereleaseNumber'
+    majorVersion: '0'
+    minorVersion: '0'
+    patchVersion: '$(Build.BuildNumber)'
 
 - task: CmdLine@2
   inputs:
