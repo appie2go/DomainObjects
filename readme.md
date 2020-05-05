@@ -61,7 +61,7 @@ public class ZipCode : Value<int, string>
     private int _postalCode;
     private string _state;
 
-    public Euro(int postalCode, string state) : base(postalCode, state)
+    public ZipCode(int postalCode, string state) : base(postalCode, state)
     {
         _postalCode = postalCode;
         _state = state ?? throw new ArgumentNullException(nameof(state));

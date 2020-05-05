@@ -2,7 +2,6 @@
 
 namespace DomainDrivenDesign.DomainObjects
 {
-
     public class Value<T> : IComparable, IEquatable<Value<T>>
     {
         private readonly T _value;
@@ -16,7 +15,6 @@ namespace DomainDrivenDesign.DomainObjects
         {
             return _value.ToString();
         }
-
 
 #region Equality
 
@@ -77,7 +75,7 @@ namespace DomainDrivenDesign.DomainObjects
             return comparable.CompareTo(valueToCompare._value);
         }
 
-        #endregion
+#endregion
     }
 
     public class Value<T1, T2> : Value<Tuple<T1, T2>>
