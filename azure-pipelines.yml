@@ -29,7 +29,7 @@ stages:
 - stage: Release
   jobs:
   - job: Release
-  - deployment: 'DomainDrivenDesign.DomainObjects'
+  - deployment: 'Production'
     displayName: 'Deploy DomainDrivenDesign.DomainObjects to nuget!'
     environment: 'Production'
     strategy: 
