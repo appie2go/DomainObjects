@@ -5,7 +5,6 @@
     <Authors>Albert Starreveld</Authors>
     <Company>Albert Starreveld</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <TargetFramework>netstandard2.1</TargetFramework>
     <TargetFrameworks>netstandard1.0;netstandard1.1;netstandard1.2;netstandard1.3;netstandard1.4;netstandard1.5;netstandard1.6;netstandard2.0;netstandard2.1;netcoreapp1.0;netcoreapp1.1;netcoreapp2.0;netcoreapp2.1;netcoreapp2.2;netcoreapp3.0;netcoreapp3.1</TargetFrameworks>
     <RootNamespace>DomainDrivenDesign.DomainObjects</RootNamespace>
     <PackageProjectUrl>https://github.com/appie2go/domainobjects</PackageProjectUrl>
