@@ -4,16 +4,18 @@ The base-classes for DDDomain objects (Entities, ValueTypes and aggregates)
 The tactical bit of Domain driven design describes value-types, entities and aggregates. A couple of rules apply:
 
 * Value-types are compared by their values
-* Entities have an ID
-* Aggregates have an ID
-* Entities and aggregates are compared by their id
-* Aggregates reference other entities by their id
+* Entities have an `Id`
+* Aggregates have an `Id`
+* Entities and aggregates are compared by their `Id`
+* Aggregates reference other entities by their `Id`
 
 To be able to do so, rquires some code. Hence this repository.
 
 ## This package is available on NuGet
 
-```bash Install-Package DomainDrivenDesign.DomainObjects -Version 0.0.8 ```
+```bash 
+Install-Package DomainDrivenDesign.DomainObjects -Version 0.0.8 
+```
 
 ## How to create a value-type
 
