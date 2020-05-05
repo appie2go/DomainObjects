@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <PackageId>DomainDrivenDesign.DomainObjects</PackageId>
-    <Version>0.0.11</Version>
+    <Version>0.0.12</Version>
     <Authors>Albert Starreveld</Authors>
     <Company>Albert Starreveld</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -9,7 +9,7 @@
     <RootNamespace>DomainDrivenDesign.DomainObjects</RootNamespace>
     <PackageProjectUrl>https://github.com/appie2go/domainobjects</PackageProjectUrl>
     <RepositoryUrl>https://github.com/appie2go/domainobjects</RepositoryUrl>
-    <PackageTags>DomainDrivenDesign</PackageTags>
+    <PackageTags>DomainDrivenDesign, domain, driven, design, baseclass, entity, aggregate, valueobject, valuetype, domainobjects</PackageTags>
     <Description>A package that contains the base classes for Aggregates, Entities and ValueTypes.</Description>
     <PackageIcon>ddd.jpg</PackageIcon>
   </PropertyGroup>
