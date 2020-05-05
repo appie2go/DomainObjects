@@ -4,10 +4,10 @@ The base-classes for DDDomain objects (Entities, ValueTypes and aggregates)
 The tactical bit of Domain driven design describes value-types, entities and aggregates. A couple of rules apply:
 
 * Value-types are compared by their values
-* Entities have an `Id`
-* Aggregates have an `Id`
-* Entities and aggregates are compared by their `Id`
-* Aggregates reference other entities by their `Id`
+* `Entities` have an `Id`
+* `Aggregates` have an `Id`
+* `Entities` and `aggregates` are compared by their `Id`
+* `Aggregates` reference other entities by their `Id`
 
 To be able to do so, rquires some code. Hence this repository.
 
