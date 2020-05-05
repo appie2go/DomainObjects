@@ -7,9 +7,9 @@ namespace DomainDrivenDesign.DomainObjects.Test
 {
     public class TestableEntity : Entity<TestableEntity>
     {
-        public Number Number { get; }
+        public Name Number { get; }
 
-        public TestableEntity(Id<TestableEntity> id, Number number) : base(id)
+        public TestableEntity(Id<TestableEntity> id, Name number) : base(id)
         {
             Number = number;
         }

@@ -31,7 +31,12 @@ Create a value type by implementing the `ValueType<T>` class, for example:
 ```csharp
 public class Euro : Value<double>
 {
-    public Euro(double value) : base(value)
+    public static Euro Create(double value)
+    {
+        return new Euro(value);
+    }
+
+    private Euro(double value) : base(value)
     {
     }
 
@@ -42,8 +47,8 @@ public class Euro : Value<double>
 
 How to use it:
 ```csharp
-var a = new Euro(3.5f);
-var b = new Euro(3.5f);
+var a = Euro.Create(3.5f);
+var b = Euro.Create(3.5f);
 
 if(a == b) // This works out of the box
 {
@@ -61,7 +66,12 @@ public class ZipCode : Value<int, string>
     private int _postalCode;
     private string _state;
 
-    public ZipCode(int postalCode, string state) : base(postalCode, state)
+    public static ZipCode Create(int postalCode, string state)
+    {
+        return new ZipCode(postalCode, state);
+    }
+
+    private ZipCode(int postalCode, string state) : base(postalCode, state)
     {
         _postalCode = postalCode;
         _state = state ?? throw new ArgumentNullException(nameof(state));
@@ -75,6 +85,40 @@ public class ZipCode : Value<int, string>
     }
 }
 ```
+
+## How to create a numeric type
+
+Some values can be greater than and may need to be sorted. Assume you want to find the cheapest product. You'll need to sort by price. Prices are in Euro. Deriving the Euro class from `NumericValue<T>` instead of `Value<T>` allows sorting and comparing:
+
+```csharp
+public class Euro : NumericValue<double>
+{
+    public static Euro Create(double value)
+    {
+        return new Euro(value);
+    }
+
+    private Euro(double value) : base(value)
+    {
+    }
+
+    // Add the methods and operators you need here
+}
+```
+
+Now may be used like this:
+
+``` csharp
+var cheap = Euro.Create(1);
+var expensive = Euro.Create(100000);
+
+if(cheap < expensive>)
+{
+    Console.WriteLine("That makes sense..");
+}
+```
+
+Note that the class is called NumericValue. In most cases it's used with numbers. But it does not explicitly require a number. It requires the type parameter to derive from IComparable<T>.
 
 ## How to create an entity
 

@@ -13,7 +13,7 @@ namespace DomainDrivenDesign.DomainObjects.Test.EntityTests
         public void WhenDifferentId_ShouldNotBeEqual()
         {
             // arrange
-            var number = _fixture.Create<Number>();
+            var number = _fixture.Create<Name>();
             var a = new TestableEntity(_fixture.Create<Id<TestableEntity>>(), number);
             var b = new TestableEntity(_fixture.Create<Id<TestableEntity>>(), number);
 
@@ -28,7 +28,7 @@ namespace DomainDrivenDesign.DomainObjects.Test.EntityTests
         public void WhenDifferentId_ShouldNotCompare()
         {
             // arrange
-            var number = _fixture.Create<Number>();
+            var number = _fixture.Create<Name>();
             var a = new TestableEntity(_fixture.Create<Id<TestableEntity>>(), number);
             var b = new TestableEntity(_fixture.Create<Id<TestableEntity>>(), number);
 
@@ -43,7 +43,7 @@ namespace DomainDrivenDesign.DomainObjects.Test.EntityTests
         public void WhenDifferentId_ShouldCompareShouldNotBeTrue()
         {
             // arrange
-            var number = _fixture.Create<Number>();
+            var number = _fixture.Create<Name>();
             var a = new TestableEntity(_fixture.Create<Id<TestableEntity>>(), number);
             var b = new TestableEntity(_fixture.Create<Id<TestableEntity>>(), number);
 
