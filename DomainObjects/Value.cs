@@ -3,7 +3,7 @@
 namespace DomainDrivenDesign.DomainObjects
 {
 
-    public class Value<T>
+    public class Value<T> : IComparable
     {
         private readonly T _value;
 
@@ -60,7 +60,24 @@ namespace DomainDrivenDesign.DomainObjects
             return _value.GetHashCode();
         }
 
-#endregion
+        public virtual int CompareTo(object obj)
+        {
+            var comparable = this._value as IComparable;
+            if (comparable == null)
+            {
+                throw new NotSupportedException("Type _value must derive from IComparable to be able to compare it.");
+            }
+
+            var valueToCompare = obj as Value<T>;
+            if (valueToCompare == null)
+            {
+                throw new NotSupportedException($"Can't compare {obj.GetType()} to {this.GetType()}");
+            }
+
+            return comparable.CompareTo(valueToCompare._value);
+        }
+
+        #endregion
     }
 
     public class Value<T1, T2> : Value<Tuple<T1, T2>>
