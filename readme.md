@@ -86,12 +86,12 @@ public class ZipCode : Value<int, string>
 }
 ```
 
-## How to create a numeric type
+## How to create a numeric or a comparable type
 
-Some values can be greater than and may need to be sorted. Assume you want to find the cheapest product. You'll need to sort by price. Prices are in Euro. Deriving the Euro class from `NumericValue<T>` instead of `Value<T>` allows sorting and comparing:
+Some values can be greater than and may need to be sorted. Assume you want to find the cheapest product. You'll need to sort by price. Prices are in Euro. Deriving the Euro class from `ComparableValue<T>` instead of `Value<T>` allows sorting and comparing:
 
 ```csharp
-public class Euro : NumericValue<double>
+public class Euro : ComparableValue<double>
 {
     public static Euro Create(double value)
     {

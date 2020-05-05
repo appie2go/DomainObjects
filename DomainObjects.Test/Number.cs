@@ -1,6 +1,6 @@
 ﻿namespace DomainDrivenDesign.DomainObjects.Test
 {
-    public class Number : NumericValue<int>
+    public class Number : ComparableValue<int>
     {
         public static Number Create(int value)
         {

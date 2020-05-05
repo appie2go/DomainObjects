@@ -2,7 +2,7 @@
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DomainDrivenDesign.DomainObjects.Test.NumericValueTests
+namespace DomainDrivenDesign.DomainObjects.Test.ComparableValueTests
 {
     [TestClass]
     public class CompareToTest

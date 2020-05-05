@@ -2,36 +2,36 @@
 
 namespace DomainDrivenDesign.DomainObjects
 {
-    public class NumericValue<T> : Value<T>, IComparable<NumericValue<T>>, IComparable where T : IComparable<T>
+    public class ComparableValue<T> : Value<T>, IComparable<ComparableValue<T>>, IComparable where T : IComparable<T>
     {
         private readonly T _value;
 
-        protected NumericValue(T value) : base(value)
+        protected ComparableValue(T value) : base(value)
         {
             _value = value;
         }
 
-        public static bool operator <(NumericValue<T> left, NumericValue<T> right)
+        public static bool operator <(ComparableValue<T> left, ComparableValue<T> right)
         {
             return left._value.CompareTo(right._value) < 0;
         }
 
-        public static bool operator >(NumericValue<T> left, NumericValue<T> right)
+        public static bool operator >(ComparableValue<T> left, ComparableValue<T> right)
         {
             return !(left < right) && left != right;
         }
 
-        public static bool operator <=(NumericValue<T> left, NumericValue<T> right)
+        public static bool operator <=(ComparableValue<T> left, ComparableValue<T> right)
         {
             return left < right || left == right;
         }
 
-        public static bool operator >=(NumericValue<T> left, NumericValue<T> right)
+        public static bool operator >=(ComparableValue<T> left, ComparableValue<T> right)
         {
             return left > right || left == right;
         }
 
-        public int CompareTo(NumericValue<T> other)
+        public int CompareTo(ComparableValue<T> other)
         {
             var comparable = this._value as IComparable;
             if (comparable == null)
@@ -44,7 +44,7 @@ namespace DomainDrivenDesign.DomainObjects
 
         public int CompareTo(object obj)
         {
-            var other = obj as NumericValue<T>;
+            var other = obj as ComparableValue<T>;
             if (other == null)
             {
                 throw new NotSupportedException($"Cannot compare {obj} to {this.GetType()}");

@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 
-namespace DomainDrivenDesign.DomainObjects.Test.NumericValueTests
+namespace DomainDrivenDesign.DomainObjects.Test.ComparableValueTests
 {
     [TestClass]
     public class SortTest
