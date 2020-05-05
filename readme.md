@@ -15,7 +15,7 @@ To be able to do so, requires some code. Hence this repository.
 ## This package is available on NuGet
 
 ```bash 
-Install-Package DomainDrivenDesign.DomainObjects -Version 0.0.8 
+Install-Package DomainDrivenDesign.DomainObjects
 ```
 
 ## How to create a value-type
