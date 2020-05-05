@@ -23,6 +23,11 @@ stages:
        publishTestResults: false
 
     - task: CmdLine@2
+      displayName: 'Create .nupkg file in sources directory'
+      inputs:
+        script: 'dotnet pack'
+
+    - task: CmdLine@2
       displayName: 'Create .nupkg file'
       inputs:
         script: 'dotnet pack -o $(Build.ArtifactStagingDirectory)'
