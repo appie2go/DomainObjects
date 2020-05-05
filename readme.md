@@ -134,7 +134,8 @@ public class Order : Entity<Order>
 {
     public Euro Price { get; }
 
-    // Important!!: Give it a public constructor
+    // Don't forget to either give the class a public constructor
+    // or add a factory method to instantiate an instance of the class..
     public Order(Id<Order> id, Euro price) : base(id)
     {
         Price = price;
