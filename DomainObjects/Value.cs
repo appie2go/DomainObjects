@@ -3,7 +3,7 @@
 namespace DomainDrivenDesign.DomainObjects
 {
 
-    public class Value<T> : IComparable
+    public class Value<T> : IComparable, IEquatable<Value<T>>
     {
         private readonly T _value;
 
