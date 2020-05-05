@@ -62,7 +62,7 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                $projectContents = cat $(System.DefaultWorkingDirectory)/drop/DomainObjects.csproj
+                $projectContents = cat $(System.ArtifactsDirectory)/drop/DomainObjects.csproj
                 $packageVersion = $projectContents -match '\d.\d.\d' -replace '(.*)(\d.\d.\d{1,20})(.*)', '$2'
-                $packageLocation = '$(System.DefaultWorkingDirectory)/drop/DomainDrivenDesign.DomainObjects.' + $packageVersion + '.nupkg'
+                $packageLocation = '$(System.ArtifactsDirectory)/drop/DomainDrivenDesign.DomainObjects.' + $packageVersion + '.nupkg'
                 dotnet nuget push $packageLocation -k $(nugetkey) -s https://api.nuget.org/v3/index.json
