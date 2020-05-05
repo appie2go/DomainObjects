@@ -6,12 +6,17 @@ namespace DomainDrivenDesign.DomainObjects
     {
         private readonly Guid _id;
 
-        public static Id<T> CreateNew()
+        public static Id<T> New()
         {
             return new Id<T>(Guid.NewGuid());
         }
 
-        public Id(Guid id) : base(id)
+        public static Id<T> Create(Guid id)
+        {
+            return new Id<T>(id);
+        }
+
+        private Id(Guid id) : base(id)
         {
             _id = id;
 

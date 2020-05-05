@@ -146,7 +146,7 @@ Use it like this:
 
 ```csharp
 var id = Id<Order>.CreateNew();
-var price = new Euro(3.5f);
+var price = Euro.Create(3.5f);
 
 var order = new Order(id, price);
 Console.WriteLine(order.Id);
@@ -181,7 +181,7 @@ Use it like this:
 ```csharp
 var id = Id<OrderAggregateRoot>.CreateNew();
 var orderId = new Id<Order>(new Guid("6001300f-8c49-402a-9545-027c8917557d"));
-var price = new Euro(3.5f);
+var price = Euro.Create(3.5f);
 
 var order = new OrderAggregateRoot(id, orderId, price);
 Console.WriteLine(order.Id);

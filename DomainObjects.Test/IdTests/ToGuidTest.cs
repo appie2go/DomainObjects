@@ -15,7 +15,7 @@ namespace DomainDrivenDesign.DomainObjects.Test.IdTests
         {
             // arrange
             var expected = _fixture.Create<Guid>();
-            var id = new Id<TestableEntity>(expected);
+            var id = Id<TestableEntity>.Create(expected);
 
             // act
             var actual = id.ToGuid();
@@ -27,7 +27,7 @@ namespace DomainDrivenDesign.DomainObjects.Test.IdTests
         [TestMethod]
         public void WhenCreateNew_ShouldNotBeEmpty()
         { // arrange
-            var id = Id<TestableEntity>.CreateNew();
+            var id = Id<TestableEntity>.New();
 
             // act
             var actual = id.ToGuid();

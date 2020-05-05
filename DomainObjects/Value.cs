@@ -21,11 +21,6 @@ namespace DomainDrivenDesign.DomainObjects
 
         public static bool operator ==(Value<T> left, Value<T> right)
         {
-            if (ReferenceEquals(left, right))
-            {
-                return true;
-            }
-
             if (object.Equals(left, null) && object.Equals(right, null))
             {
                 return true;
@@ -36,7 +31,7 @@ namespace DomainDrivenDesign.DomainObjects
                 return false;
             }
 
-            return object.Equals(left._value, right._value);
+            return left.Equals(right);
         }
 
         public static bool operator !=(Value<T> left, Value<T> right)
@@ -46,12 +41,28 @@ namespace DomainDrivenDesign.DomainObjects
 
         public bool Equals(Value<T> other)
         {
-            return this == other;
+            return Equals((object)other);
         }
 
         public override bool Equals(object obj)
         {
-            return this == obj as Value<T>;
+            if (object.Equals(obj, null))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (!(obj is Value<T>))
+            {
+                return false;
+            }
+
+            var other = (Value<T>)obj;
+            return object.Equals(_value, other._value);
         }
 
         public override int GetHashCode()

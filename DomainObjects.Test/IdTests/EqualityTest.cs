@@ -16,8 +16,8 @@ namespace DomainDrivenDesign.DomainObjects.Test.IdTests
         {
             // arrange
             var guid = _fixture.Create<Guid>();
-            var a = new Id<TestableEntity>(guid);
-            var b = new Id<TestableEntity>(guid);
+            var a = Id<TestableEntity>.Create(guid);
+            var b = Id<TestableEntity>.Create(guid);
 
             // act
             Action act = () => a.Should().Be(b);
@@ -31,12 +31,12 @@ namespace DomainDrivenDesign.DomainObjects.Test.IdTests
         {
             // arrange
             var guid = _fixture.Create<Guid>();
-            var a = new Id<TestableEntity>(guid);
+            var a = Id<TestableEntity>.Create(guid);
             var list = new List<Id<TestableEntity>>
             {
-                new Id<TestableEntity>(guid),
-                new Id<TestableEntity>(_fixture.Create<Guid>()),
-                new Id<TestableEntity>(_fixture.Create<Guid>())
+                Id<TestableEntity>.Create(guid),
+                Id<TestableEntity>.Create(_fixture.Create<Guid>()),
+                Id<TestableEntity>.Create(_fixture.Create<Guid>())
             };
 
             // act
