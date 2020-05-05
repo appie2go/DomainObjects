@@ -112,7 +112,7 @@ Now may be used like this:
 var cheap = Euro.Create(1);
 var expensive = Euro.Create(100000);
 
-if(cheap < expensive>)
+if(cheap < expensive)
 {
     Console.WriteLine("That makes sense..");
 }
