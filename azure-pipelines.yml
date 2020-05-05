@@ -25,7 +25,7 @@ stages:
     - task: CmdLine@2
       displayName: 'Create .nupkg file in sources directory'
       inputs:
-        script: 'dotnet pack'
+        script: 'dotnet build'
 
     - task: CmdLine@2
       displayName: 'Create .nupkg file'
