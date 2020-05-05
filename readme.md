@@ -51,6 +51,31 @@ if(a == b) // This works out of the box
 }
 ```
 
+## How to create a value-type with multiple values:
+
+Create it by implementing the `ValueType<T1, T2, etc.>` class, for example:
+
+```csharp
+public class ZipCode : Value<int, string>
+{
+    private int _postalCode;
+    private string _state;
+
+    public Euro(int postalCode, string state) : base(postalCode, state)
+    {
+        _postalCode = postalCode;
+        _state = state ?? throw new ArgumentNullException(nameof(state));
+    }
+
+    // Add the methods and operators you need here
+
+    public override string ToString()
+    {
+        return $"{_postalCode} ${_state}";
+    }
+}
+```
+
 ## How to create an entity
 
 This package contains a base-class for a entities. It supports:
@@ -102,7 +127,7 @@ public class OrderAggregateRoot : Aggregate<OrderAggregateRoot>
     public OrderAggregateRoot(Id<OrderAggregateRoot> id, Id<Order> orderId, Euro price) : base(id)
     {
         OrderId = orderId;
-        OrderId = orderId;
+        Price = price;
     }
 }
 ```
