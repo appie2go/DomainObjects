@@ -16,6 +16,7 @@ stages:
   - job: Build
     steps:
     - task: DotNetCoreCLI@2
+      displayName: 'Test the new version!'
       inputs:
        command: 'test'
        projects: '**/*test.csproj'
@@ -25,6 +26,18 @@ stages:
       displayName: 'Create .nupkg file'
       inputs:
         script: 'dotnet pack -o $(Build.ArtifactStagingDirectory)'
+    - task: CopyFiles@2
+      displayName: 'Copy .csproj'
+      inputs:
+        SourceFolder: '$(Build.SourcesDirectory)/DomainObjects/'
+        Contents: 'DomainObjects.csproj'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
 
 - stage: Release
   jobs:
@@ -40,7 +53,7 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                $projectContents = cat $(Build.SourcesDirectory)/DomainObjects/DomainObjects.csproj
+                $projectContents = cat $(System.DefaultWorkingDirectory)/drop/DomainObjects/DomainObjects.csproj
                 $packageVersion = $projectContents -match '\d.\d.\d' -replace '(.*)(\d.\d.\d{1,20})(.*)', '$2'
-                $packageLocation = '$(Build.ArtifactStagingDirectory)/DomainDrivenDesign.DomainObjects.' + $packageVersion + '.nupkg'
+                $packageLocation = '$(System.DefaultWorkingDirectory)/drop/DomainDrivenDesign.DomainObjects.' + $packageVersion + '.nupkg'
                 dotnet nuget push $packageLocation -k $(nugetkey) -s https://api.nuget.org/v3/index.json
