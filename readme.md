@@ -1,15 +1,15 @@
 # DomainObjects
-The base-classes for DDDomain objects (Entities, ValueTypes and aggregates)
+The base-classes for DDDomain objects (Entities, Value-Types, and Aggregates)
 
-The tactical bit of Domain driven design describes value-types, entities and aggregates. A couple of rules apply:
+The tactical bit of Domain-driven design describes value-types, entities, and aggregates. A couple of rules apply:
 
-* Value-types are compared by their values
+* Compare Value-types by their values
 * Entities have an ID
 * Aggregates have an ID
-* Entities and aggregates are compared by their id
-* Aggregates reference other entities by their id
+* Compare Entities and aggregates by their ids
+* Aggregates reference other entities by id
 
-To be able to do so, rquires some code. Hence this repository.
+To be able to do so, requires some code. Hence this repository.
 
 ## This package is available on NuGet
 
@@ -17,7 +17,7 @@ To be able to do so, rquires some code. Hence this repository.
 
 ## How to create a value-type
 
-This package contains a  base-class for a value type. It supports:
+This package contains a base-class for a value type. It supports:
 
 * Comparing value types by the values it contains using .Equals(x), == and !=
 * Converting it to a string using the ToString() method
@@ -55,7 +55,7 @@ This package contains a base-class for a entities. It supports:
 * Comparing entities by using .Equals(x), == and !=
 * Ids
 
-Create an entity by implementing the `Entity<T>` base-class. It provides a public propery called ID on every entity. It requires the class to be constructed with an Id. Obviously, you'll need more than just an Id. Add the properties you need to the constructor of the entity. Don't pass it to the base class. Example:
+Create an entity by implementing the `Entity<T>` base-class. It provides a public property called ID on every entity. Always construct an entity with an Id. Entities are more than just an Id. Add the properties you need to the constructor of the entity. Don't pass it to the base class. Example:
 
 ```
     public class Order : Entity<Order>
@@ -88,7 +88,7 @@ This package contains a base-class for a entities. It supports:
 * Comparing entities by using .Equals(x), == and !=
 * Ids
 
-An aggregate is an entity. Create an entity by implementing the `Aggregate<T>` base-class. It provides a public propery called ID on every entity. It requires the class to be constructed with an Id. Obviously, you'll need more than just an Id. Add the properties you need to the constructor of the aggregate. Example:
+Create an aggregate by implementing the `Aggregate<T>` base-class. It provides a public property called ID on every aggregate. Always construct an entity with an Id. Aggregates are more than just an Id. Add the properties you need to the constructor of the aggregate. Don't pass it to the base class. Example:
 
 ```
     public class OrderAggregateRoot : Aggregate<OrderAggregateRoot>
@@ -116,3 +116,7 @@ Use it like this:
     Console.WriteLine(order.OrderId);
     Console.WriteLine(order.Price);
 ```
+
+## See it in action!
+
+Use this repository as a reference. See how to use the DomainDrivenDesign.DomainObjects NuGet package [in this solution](https://github.com/appie2go/steal-this-code), in this [project](https://github.com/appie2go/steal-this-code/tree/master/Source/Dispatching).
