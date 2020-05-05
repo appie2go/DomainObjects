@@ -23,19 +23,10 @@ stages:
        publishTestResults: false
 
     - task: CmdLine@2
-      displayName: 'Build'
-      inputs:
-        script: 'dotnet build'
-
-    - task: CmdLine@2
-      displayName: 'ls'
-      inputs:
-        script: 'ls /home/vsts/work/1/s/DomainObjects/bin/Debug'
-
-    - task: CmdLine@2
       displayName: 'Create .nupkg file'
       inputs:
         script: 'dotnet pack -o $(Build.ArtifactStagingDirectory)'
+        
     - task: CopyFiles@2
       displayName: 'Copy .csproj'
       inputs:
