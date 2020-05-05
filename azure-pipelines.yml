@@ -23,9 +23,14 @@ stages:
        publishTestResults: false
 
     - task: CmdLine@2
-      displayName: 'Create .nupkg file in sources directory'
+      displayName: 'Build'
       inputs:
         script: 'dotnet build'
+
+    - task: CmdLine@2
+      displayName: 'ls'
+      inputs:
+        script: 'ls /home/vsts/work/1/s/DomainObjects/bin/Debug'
 
     - task: CmdLine@2
       displayName: 'Create .nupkg file'
