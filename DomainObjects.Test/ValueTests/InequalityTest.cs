@@ -110,5 +110,33 @@ namespace DomainObjects.Test.ValueTests
             // Assert
             actual.Should().BeTrue();
         }
+
+        [TestMethod]
+        public void WhenComparingToNull_ShouldBeUnequal()
+        {
+            // arrange
+            var a = new TestableValue<string>(_fixture.Create<string>());
+            TestableValue<string> b = null;
+
+            // act
+            var actual = a == b;
+
+            // Assert
+            actual.Should().BeFalse();
+        }
+
+        [TestMethod]
+        public void WhenComparingNullToNull_ShouldBeUnequal()
+        {
+            // arrange
+            TestableValue<string> a = null;
+            TestableValue<string> b = null;
+
+            // act
+            var actual = a == b;
+
+            // Assert
+            actual.Should().BeTrue();
+        }
     }
 }

@@ -27,6 +27,16 @@ namespace DomainDrivenDesign.DomainObjects
                 return true;
             }
 
+            if (object.Equals(left, null) && object.Equals(right, null))
+            {
+                return true;
+            }
+
+            if (object.Equals(left, null) || object.Equals(right, null))
+            {
+                return false;
+            }
+
             return object.Equals(left._value, right._value);
         }
 
