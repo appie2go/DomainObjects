@@ -26,7 +26,7 @@ This package contains a base-class for a value type. It supports:
 * Converting it to a string using the ToString() method
 * Sorting lists of values
 
-Create a value type by implementing the `ValueType<T>` class, for example:
+Create a value type by implementing the `Value<T>` class, for example:
 
 ```csharp
 public class Euro : Value<double>
@@ -58,7 +58,7 @@ if(a == b) // This works out of the box
 
 ## How to create a value-type with multiple values:
 
-Create it by implementing the `ValueType<T1, T2, etc.>` class, for example:
+Create it by implementing the `Value<T1, T2, etc.>` class:
 
 ```csharp
 public class ZipCode : Value<int, string>
@@ -88,7 +88,17 @@ public class ZipCode : Value<int, string>
 
 ## How to create a numeric or a comparable type
 
-Some values can be greater than and may need to be sorted. Assume you want to find the cheapest product. You'll need to sort by price. Prices are in Euro. Deriving the Euro class from `ComparableValue<T>` instead of `Value<T>` allows sorting and comparing:
+Some values can be greater than and may need to be sorted. Assume you want to find the cheapest product. You'll need to sort by price. Prices are in Euro. Deriving the Euro class from `ComparableValue<T>` instead of `Value<T>` allows sorting and comparing.
+
+`ComparableValue<T>` supports:
+
+* Comparing by using ==, != and .Equals(x)
+* Comparing by using the <, >, <= and => operator
+* Ordering collections by using collection.OrderBy(x => x...)
+* Getting the smallest and biggest value in a collection using collection.Min() or collection.Max()
+
+Example:
+
 
 ```csharp
 public class Euro : ComparableValue<double>
@@ -152,6 +162,22 @@ var price = Euro.Create(3.5f);
 var order = new Order(id, price);
 Console.WriteLine(order.Id);
 Console.WriteLine(order.Price);
+```
+
+### Comparing an entities (and aggregates)
+
+Entities are compared by id. Not by value or reference. The same applies for aggregates. That means that different entities, with the same id are concidered equal. For example:
+
+``` csharp
+var id = Id<Order>.New();
+
+var order = new Order(id, Euro.Create(2));
+var sameOrderWithDifferentValues = new Order(id, Euro.Create(3));
+
+if (order == sameOrderWithDifferentValues)
+{
+    Console.WriteLine("This is true!");
+}
 ```
 
 ## How to create an aggregate
