@@ -2,7 +2,7 @@
 
 namespace DomainDrivenDesign.DomainObjects
 {
-    public class Entity<T, TKey> where T : Entity<T>
+    public class Entity<T, TKey> where T : Entity<T, TKey>
     {
         public Id<T, TKey> Id { get; }
 

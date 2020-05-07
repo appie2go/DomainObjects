@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <PackageId>DomainDrivenDesign.DomainObjects</PackageId>
-    <Version>0.0.19</Version>
+    <Version>0.0.20</Version>
     <Authors>Albert Starreveld</Authors>
     <Company>Albert Starreveld</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

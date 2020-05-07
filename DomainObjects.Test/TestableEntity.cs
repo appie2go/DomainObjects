@@ -1,19 +1,17 @@
-﻿using DomainObjects.Test;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DomainDrivenDesign.DomainObjects.Test
+﻿namespace DomainDrivenDesign.DomainObjects.Test
 {
     public class TestableEntity : Entity<TestableEntity>
     {
-        public Name Number { get; }
+        public Name Name { get; }
 
-        public TestableEntity(Id<TestableEntity> id, Name number) : base(id)
+        public static TestableEntity Create(Id<TestableEntity> id, Name number)
         {
-            Number = number;
+            return new TestableEntity(id, number);
         }
 
-
+        private TestableEntity(Id<TestableEntity> id, Name number) : base(id)
+        {
+            Name = number;
+        }
     }
 }

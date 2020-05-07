@@ -2,7 +2,7 @@
 
 namespace DomainDrivenDesign.DomainObjects
 {
-    public abstract class Id<T, TKey> : Value<TKey> where T : Entity<T>
+    public abstract class Id<T, TKey> : Value<TKey> where T : Entity<T, TKey>
     {
         private readonly TKey _id;
 
@@ -17,7 +17,7 @@ namespace DomainDrivenDesign.DomainObjects
         }
     }
 
-    public sealed class Id<T> : Id<T, Guid> where T : Entity<T>
+    public class Id<T> : Id<T, Guid> where T : Entity<T, Guid>
     {
         private readonly Guid _id;
 
