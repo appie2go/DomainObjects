@@ -313,7 +313,7 @@ public class BookId : Id<BookAggregate, int>
 The aggregate base-class has an overload that has two type parameters. The first being the type of the aggregate. The second one being the type of Id to use:
 
 ``` csharp
-public class Book : Aggregate<BookAggregate, int>
+public class BookAggregate : Aggregate<BookAggregate, int>
 {
     public Number Number { get; }
 
