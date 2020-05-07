@@ -56,6 +56,9 @@ if(a == b) // This works out of the box
 }
 ```
 
+**Important:** This classed is based on the principle that a value object's values **do never change!** Do **not** change the values of a value-object's. Instead, **create a new instance of the value-object with the new values** or concider implementing the `entity<T>` class. If the values of a value-object are changed, the ==, != and .Equals(x) do not work properly any-more. This behavior is by design!!
+
+
 ## How to create a value-type with multiple values:
 
 Create it by implementing the `Value<T1, T2, etc.>` class:
@@ -98,7 +101,6 @@ Some values can be greater than and may need to be sorted. Assume you want to fi
 * Getting the smallest and biggest value in a collection using collection.Min() or collection.Max()
 
 Example:
-
 
 ```csharp
 public class Euro : ComparableValue<double>
