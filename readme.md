@@ -59,6 +59,8 @@ if(a == b) // This works out of the box
 **Important:** This classed is based on the principle that a value object's values **do never change!** Do **not** change the values of a value-object's. Instead, **create a new instance of the value-object with the new values** or concider implementing the `entity<T>` class. If the values of a value-object are changed, the ==, != and .Equals(x) do not work properly any-more. This behavior is by design!!
 
 
+Read about the filosofy of value objects in [this blog-post](https://medium.com/@abstarreveld/implementing-custom-data-types-in-c-23b904cfd4ae?source=friends_link&sk=49b6e15098bd4bb45d5c6ac87c94e5ef).
+
 ## How to create a value-type with multiple values:
 
 Create it by implementing the `Value<T1, T2, etc.>` class:
@@ -326,6 +328,8 @@ public class Book : Aggregate<BookAggregate, int>
     }
 }
 ```
+
+
 
 ## See it in action!
 
