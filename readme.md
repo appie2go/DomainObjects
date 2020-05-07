@@ -158,7 +158,7 @@ Works like this:
 
 ```
 
-var aggreed = AgreedToLicense.Create(true);
+var agreed = AgreedToLicense.Create(true);
 
 if(agreed)
 {
