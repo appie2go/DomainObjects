@@ -2,7 +2,22 @@
 
 namespace DomainDrivenDesign.DomainObjects
 {
-    public sealed class Id<T> : Value<Guid> where T : Entity<T>
+    public abstract class Id<T, TKey> : Value<TKey> where T : Entity<T>
+    {
+        private readonly TKey _id;
+
+        protected Id(TKey id) : base(id)
+        {
+            _id = id;
+        }
+
+        public override string ToString()
+        {
+            return _id.ToString();
+        }
+    }
+
+    public sealed class Id<T> : Id<T, Guid> where T : Entity<T>
     {
         private readonly Guid _id;
 
@@ -24,12 +39,6 @@ namespace DomainDrivenDesign.DomainObjects
             {
                 throw new ArgumentException(nameof(id), $"{id} is not a valid identifier.");
             }
-        }
-
-
-        public override string ToString()
-        {
-            return _id.ToString();
         }
 
         public Guid ToGuid()
