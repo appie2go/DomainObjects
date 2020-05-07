@@ -130,6 +130,41 @@ if(cheap < expensive)
 
 Note that the class is called NumericValue. In most cases it's used with numbers. But it does not explicitly require a number. It requires the type parameter to derive from IComparable<T>.
 
+## Creating boolean value-objects
+
+In case the value-object is boolean, use the `BooleanValue` object. It suports:
+
+* Comparing by using ==, != and .Equals(x)
+* Comparing with bool
+* Using the if(booleanValue) statement to compare
+
+``` csharp
+public class AgreedToLicense : BoolValue
+{
+    public static AgreedToLicense Create(bool value)
+    {
+        return new AgreedToLicense(value);
+    }
+
+    private AgreedToLicense(bool value) : base(value)
+    {
+    }
+}
+```
+
+Works like this:
+
+```
+
+var aggreed = AgreedToLicense.Create(true);
+
+if(agreed)
+{
+    Console.WriteLine("Eureka!");
+}
+
+```
+
 ## How to create an entity
 
 This package contains a base-class for a entities. It supports:
@@ -164,7 +199,7 @@ Console.WriteLine(order.Id);
 Console.WriteLine(order.Price);
 ```
 
-### Comparing an entities (and aggregates)
+### Comparing entities (and aggregates)
 
 Entities are compared by id. Not by value or reference. The same applies for aggregates. That means that different entities, with the same id are concidered equal. For example:
 
@@ -177,6 +212,43 @@ var sameOrderWithDifferentValues = new Order(id, Euro.Create(3));
 if (order == sameOrderWithDifferentValues)
 {
     Console.WriteLine("This is true!");
+}
+```
+
+## Creating an entity that does not use a Guid as id
+
+This code is easiest to use with entities that use Guids for ids. However, it supports any other type of id, too. To make that work, implement the id yourself. Like this:
+
+``` csharp
+public class BookId : Id<Book, int>
+{
+    public static BookId Create(int id)
+    {
+        return new BookId(id);
+    }
+
+    private BookId(int id) : base(id)
+    {
+    }
+}
+```
+
+The entity base-class has an overload that has two type parameters. The first being the type of the entity. The second one being the type of Id to use:
+
+``` csharp
+public class Book : Entity<Book, int>
+{
+    public Number Number { get; }
+
+    public static Book Create(BookId id, Number number)
+    {
+        return new Book(id, number);
+    }
+
+    protected Book(BookId id, Number number) : base(id)
+    {
+        Number = number;
+    }
 }
 ```
 
@@ -214,6 +286,43 @@ var order = new OrderAggregateRoot(id, orderId, price);
 Console.WriteLine(order.Id);
 Console.WriteLine(order.OrderId);
 Console.WriteLine(order.Price);
+```
+
+## Creating an aggregate that does not use a Guid as id
+
+This code is easiest to use with aggregates that use Guids for ids. However, it supports any other type of id, too. To make that work, implement the id yourself. Like this:
+
+``` csharp
+public class BookId : Id<BookAggregate, int>
+{
+    public static BookId Create(int id)
+    {
+        return new BookId(id);
+    }
+
+    private BookId(int id) : base(id)
+    {
+    }
+}
+```
+
+The aggregate base-class has an overload that has two type parameters. The first being the type of the aggregate. The second one being the type of Id to use:
+
+``` csharp
+public class Book : Aggregate<BookAggregate, int>
+{
+    public Number Number { get; }
+
+    public static BookAggregate Create(BookId id, Number number)
+    {
+        return new BookAggregate(id, number);
+    }
+
+    protected Book(BookId id, Number number) : base(id)
+    {
+        Number = number;
+    }
+}
 ```
 
 ## See it in action!

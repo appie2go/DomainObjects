@@ -14,8 +14,8 @@ namespace DomainDrivenDesign.DomainObjects.Test.EntityTests
         {
             // arrange
             var id = _fixture.Create<Id<TestableEntity>>();
-            var a = new TestableEntity(id, _fixture.Create<Name>());
-            var b = new TestableEntity(id, _fixture.Create<Name>());
+            var a = TestableEntity.Create(id, _fixture.Create<Name>());
+            var b = TestableEntity.Create(id, _fixture.Create<Name>());
 
             // act
             var actual = a.Equals(b);
@@ -29,8 +29,8 @@ namespace DomainDrivenDesign.DomainObjects.Test.EntityTests
         {
             // arrange
             var id = _fixture.Create<Id<TestableEntity>>();
-            var a = new TestableEntity(id, _fixture.Create<Name>());
-            var b = new TestableEntity(id, _fixture.Create<Name>());
+            var a = TestableEntity.Create(id, _fixture.Create<Name>());
+            var b = TestableEntity.Create(id, _fixture.Create<Name>());
 
             // act
             var actual = a.Equals((object)b);
@@ -44,8 +44,8 @@ namespace DomainDrivenDesign.DomainObjects.Test.EntityTests
         {
             // arrange
             var id = _fixture.Create<Id<TestableEntity>>();
-            var a = new TestableEntity(id, _fixture.Create<Name>());
-            var b = new TestableEntity(id, _fixture.Create<Name>());
+            var a = TestableEntity.Create(id, _fixture.Create<Name>());
+            var b = TestableEntity.Create(id, _fixture.Create<Name>());
 
             // act
             var actual = a == b;
