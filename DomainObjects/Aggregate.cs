@@ -9,7 +9,7 @@ namespace DomainDrivenDesign.DomainObjects
         }
     }
 
-    public class Aggregate<T> : Aggregate<T, Guid> where T : Aggregate<T, Guid>
+    public class Aggregate<T> : Entity<T> where T : Aggregate<T>
     {
         protected Aggregate(Id<T> id) : base(id)
         {
