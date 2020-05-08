@@ -42,8 +42,11 @@ namespace DomainDrivenDesign.DomainObjects
 
     public class Entity<T> : Entity<T, Guid> where T : Entity<T>
     {
+        public new Id<T> Id { get; }
+
         protected Entity(Id<T> id) : base(id)
         {
+            Id = id;
         }
     }
 }

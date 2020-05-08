@@ -29,6 +29,23 @@ namespace DomainDrivenDesign.DomainObjects.Test.EntityTests
         }
 
         [TestMethod]
+        public void WhenGuidId_ShouldBeOfTypeId_Key()
+        {
+            // arrange
+            var expected = _fixture.Create<Guid>();
+            var id = Id<TestableEntity>.Create(expected);
+            var name = _fixture.Create<Name>();
+
+            // act
+            var actual = TestableEntity.Create(id, name);
+
+            // assert
+            actual.Id
+                .Should()
+                .BeOfType<Id<TestableEntity>>();
+        }
+
+        [TestMethod]
         public void WhenIntId_ShouldContainIntId()
         {
             // arrange
