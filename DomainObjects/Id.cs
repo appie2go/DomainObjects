@@ -31,7 +31,7 @@ namespace DomainDrivenDesign.DomainObjects
             return new Id<T>(id);
         }
 
-        private Id(Guid id) : base(id)
+        protected Id(Guid id) : base(id)
         {
             _id = id;
 
