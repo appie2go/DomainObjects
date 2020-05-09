@@ -13,7 +13,7 @@ namespace DomainDrivenDesign.DomainObjects.Test
         public void WhenTrue_ShouldBeTrue()
         {
             // act
-            bool value = TestBooleanValue.Create(true);
+            bool value = TestableBooleanValue.Create(true);
 
             // assert
             value.Should().BeTrue();
@@ -23,7 +23,7 @@ namespace DomainDrivenDesign.DomainObjects.Test
         public void WhenFalse_ShouldBeFalse()
         {
             // act
-            bool value = TestBooleanValue.Create(false);
+            bool value = TestableBooleanValue.Create(false);
 
             // assert
             value.Should().BeFalse();
@@ -33,7 +33,7 @@ namespace DomainDrivenDesign.DomainObjects.Test
         public void WhenComparingBooleanValueTrueToTrue_ShouldBeEqual()
         {
             // arrange
-            var a = TestBooleanValue.Create(true);
+            var a = TestableBooleanValue.Create(true);
             var b = true;
 
             // act
@@ -48,7 +48,7 @@ namespace DomainDrivenDesign.DomainObjects.Test
         {
             // arrange
             var a = true;
-            var b = TestBooleanValue.Create(true);
+            var b = TestableBooleanValue.Create(true);
 
             // act
             var actual = a == b;
@@ -61,7 +61,7 @@ namespace DomainDrivenDesign.DomainObjects.Test
         public void WhenComparingBooleanValueTrueToFalse_ShouldNotBeEqual()
         {
             // arrange
-            var a = TestBooleanValue.Create(true);
+            var a = TestableBooleanValue.Create(true);
             var b = false;
 
             // act
@@ -76,7 +76,7 @@ namespace DomainDrivenDesign.DomainObjects.Test
         {
             // arrange
             var a = false;
-            var b = TestBooleanValue.Create(true);
+            var b = TestableBooleanValue.Create(true);
 
             // act
             var actual = a == b;

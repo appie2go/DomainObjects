@@ -1,49 +1,28 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace DomainDrivenDesign.DomainObjects
 {
-    public abstract class Id<T, TKey> : Value<TKey> where T : Entity<T, TKey>
+    public class Id<T> : PrimaryKey<T> where T : Entity<T>
     {
-        private readonly TKey _id;
+        private readonly Guid _guid;
 
-        protected Id(TKey id) : base(id)
+        public static Id<T> New() => new Id<T>(Guid.NewGuid());
+
+        public static Id<T> Create(Guid id) => new Id<T>(id);
+
+        private Id() : base(Guid.NewGuid()) { }
+
+        private Id(Guid guid) : base(guid) 
         {
-            _id = id;
+            _guid = guid;
         }
 
-        public override string ToString()
-        {
-            return _id.ToString();
-        }
+        public Guid ToGuid() => _guid;
     }
 
-    public class Id<T> : Id<T, Guid> where T : Entity<T, Guid>
+    public class Id<T, TType> : PrimaryKey<T> where T : Entity<T>
     {
-        private readonly Guid _id;
-
-        public static Id<T> New()
-        {
-            return new Id<T>(Guid.NewGuid());
-        }
-
-        public static Id<T> Create(Guid id)
-        {
-            return new Id<T>(id);
-        }
-
-        protected Id(Guid id) : base(id)
-        {
-            _id = id;
-
-            if (id == Guid.Empty)
-            {
-                throw new ArgumentException(nameof(id), $"{id} is not a valid identifier.");
-            }
-        }
-
-        public Guid ToGuid()
-        {
-            return _id;
-        }
+        protected Id(TType id) : base(id) { }
     }
 }

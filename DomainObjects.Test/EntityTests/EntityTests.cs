@@ -50,11 +50,11 @@ namespace DomainDrivenDesign.DomainObjects.Test.EntityTests
         {
             // arrange
             var expected = _fixture.Create<int>();
-            var id = IntId.Create(expected);
+            var id = CustomEntityId.Create(expected);
             var number = _fixture.Create<Number>();
 
             // act
-            var actual = TestableEntityWithIntId.Create(id, number);
+            var actual = TestableEntityWithCustomEntityId.Create(id, number);
 
             // assert
             actual.Id
