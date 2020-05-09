@@ -240,7 +240,7 @@ public class BookId : Id<Book, int>
 The entity base-class has an overload that has two type parameters. The first being the type of the entity. The second one being the type of Id to use:
 
 ``` csharp
-public class Book : Entity<Book, int>
+public class Book : Entity<Book, BookId>
 {
     public Number Number { get; }
 
@@ -313,7 +313,7 @@ public class BookId : Id<BookAggregate, int>
 The aggregate base-class has an overload that has two type parameters. The first being the type of the aggregate. The second one being the type of Id to use:
 
 ``` csharp
-public class BookAggregate : Aggregate<BookAggregate, int>
+public class BookAggregate : Aggregate<BookAggregate, BookId>
 {
     public Number Number { get; }
 
@@ -322,7 +322,7 @@ public class BookAggregate : Aggregate<BookAggregate, int>
         return new BookAggregate(id, number);
     }
 
-    protected Book(BookId id, Number number) : base(id)
+    private BookAggregate(BookId id, Number number) : base(id)
     {
         Number = number;
     }
