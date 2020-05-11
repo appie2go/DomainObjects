@@ -2,9 +2,9 @@
 
 namespace DomainDrivenDesign.DomainObjects
 {
-
-    public class Aggregate<T, TKey> : Entity<T, TKey> where T : Aggregate<T, TKey>
-        where TKey : PrimaryKey<T>
+    public class Aggregate<T, TKey> : Entity<T, TKey>, IEntity<T>
+        where T : Entity<T, TKey>
+        where TKey : Id, IId<T>
     {
         protected Aggregate(TKey id) : base(id)
         {

@@ -3,23 +3,52 @@ using System.Collections.Generic;
 
 namespace DomainDrivenDesign.DomainObjects
 {
-    public class Entity<T, TKey> : Entity<T> 
-        where T : Entity<T>
-        where TKey : PrimaryKey<T>
+    public class Entity<T, TKey> : IEntity<T>
+        where T : Entity<T, TKey>
+        where TKey : Id
     {
         public TKey Id { get; }
 
-        protected Entity(TKey id) : base(id)
+        protected Entity(TKey id)
         {
             Id = id;
         }
+
+#region Equality
+
+        public static bool operator ==(Entity<T, TKey> left, Entity<T, TKey> right)
+        {
+            return left?.Id == right?.Id;
+        }
+
+        public static bool operator !=(Entity<T, TKey> left, Entity<T, TKey> right)
+        {
+            return !(left == right);
+        }
+
+        public bool Equals(Entity<T, TKey> other)
+        {
+            return this == other;
+        }
+         
+        public override bool Equals(object obj)
+        {
+            return this == obj as Entity<T, TKey>;
+        }
+
+        public override int GetHashCode()
+        {
+            return 2108858624 + Id.GetHashCode();
+        }
+
+#endregion
     }
 
     public class Entity<T> where T : Entity<T>
     {
-        public PrimaryKey<T> Id { get; }
+        public Id<T> Id { get; }
 
-        protected Entity(PrimaryKey<T> id)
+        protected Entity(Id<T> id)
         {
             Id = id ?? throw new ArgumentNullException(nameof(id), "Entity must have an id.");
         }
