@@ -3,11 +3,17 @@ using System.ComponentModel;
 
 namespace DomainDrivenDesign.DomainObjects
 {
+    /// <summary>
+    /// A unique value used to identify either an aggregate or an entity
+    /// </summary>
     public abstract class Id
     {
         internal Id() { }
 
 #region Equality
+        /// <summary>
+        /// Compares the two Ids by value and returns a boolean value indicating the two Id's are equal.
+        /// </summary>
         public static bool operator ==(Id left, Id right)
         {
             if (object.Equals(left, null) && object.Equals(right, null))
@@ -23,10 +29,19 @@ namespace DomainDrivenDesign.DomainObjects
             return left.Equals(right);
         }
 
+        /// <summary>
+        /// Compares the two Ids by value and returns a boolean value indicating the two Id's are not equal.
+        /// </summary>
         public static bool operator !=(Id left, Id right) => !(left == right);
 
+        /// <summary>
+        /// Compares the two Ids by value and returns a boolean value indicating the two Id's are equal.
+        /// </summary>
         public bool Equals(Id other) => Equals((object)other);
 
+        /// <summary>
+        /// Compares the two Ids by value and returns a boolean value indicating the two Id's are equal.
+        /// </summary>
         public override bool Equals(object obj)
         {
             if (object.Equals(obj, null))
@@ -58,15 +73,28 @@ namespace DomainDrivenDesign.DomainObjects
         public override string ToString() => Value.ToString();
     }
 
+    /// <summary>
+    /// A type used to identify an entity or an aggregate, uses a globally unique identifier (Guid) as a value.
+    /// </summary>
+    /// <typeparam name="T">Identifies the type of entity/aggregate this Id refers to.</typeparam>
     public class Id<T> : Id where T : Entity<T>
     {
         private readonly Guid _id;
 
+        /// <summary>
+        /// Creates a new instance of the Id class.
+        /// </summary>
+        /// <param name="id">The value of the id.</param>
+        /// <returns>A new instance of the Id class.</returns>
         public static Id<T> Create(Guid id) => new Id<T>(id);
 
+        /// <summary>
+        /// Creates a new, unique instance of the Id class.
+        /// </summary>
+        /// <returns>A new, unique instance of the Id class.</returns>
         public static Id<T> New() => new Id<T>(Guid.NewGuid());
 
-        public Id(Guid id)
+        private Id(Guid id)
         {
             if (id == Guid.Empty)
             {
@@ -80,6 +108,10 @@ namespace DomainDrivenDesign.DomainObjects
 
         protected override object Value => _id;
 
+        /// <summary>
+        /// Converts the Id to a Guid.
+        /// </summary>
+        /// <returns>A guid.</returns>
         public Guid ToGuid() => _id;
     }
 
@@ -87,6 +119,10 @@ namespace DomainDrivenDesign.DomainObjects
     {
         private readonly TType _id;
 
+        /// <summary>
+        /// Creates a new instance of the id class.
+        /// </summary>
+        /// <param name="id">The unique value that identifies the entity or aggregate</param>
         public Id(TType id)
         {
             _id = id;
