@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 
 namespace DomainDrivenDesign.DomainObjects
 {
@@ -10,7 +9,7 @@ namespace DomainDrivenDesign.DomainObjects
     {
         internal Id() { }
 
-#region Equality
+        #region Equality
         /// <summary>
         /// Compares the two Ids by value and returns a boolean value indicating the two Id's are equal.
         /// </summary>
@@ -64,7 +63,7 @@ namespace DomainDrivenDesign.DomainObjects
         }
 
         public override int GetHashCode() => Value.GetHashCode();
-#endregion
+        #endregion
 
         protected abstract Type EntityType { get; }
 

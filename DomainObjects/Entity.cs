@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace DomainDrivenDesign.DomainObjects
 {
@@ -26,7 +25,7 @@ namespace DomainDrivenDesign.DomainObjects
             Id = id;
         }
 
-#region Equality
+        #region Equality
 
         /// <summary>
         /// Returns a boolean value indicating the two objects have the same id. (true or false)
@@ -65,7 +64,7 @@ namespace DomainDrivenDesign.DomainObjects
             return 2108858624 + Id.GetHashCode();
         }
 
-#endregion
+        #endregion
     }
 
     /// <summary>
@@ -88,7 +87,7 @@ namespace DomainDrivenDesign.DomainObjects
             Id = id ?? throw new ArgumentNullException(nameof(id), "Entity must have an id.");
         }
 
-#region Equality
+        #region Equality
 
         /// <summary>
         /// Returns a boolean value indicating the two objects have the same id. (true or false)
@@ -127,6 +126,6 @@ namespace DomainDrivenDesign.DomainObjects
             return 2108858624 + Id.GetHashCode();
         }
 
-#endregion
+        #endregion
     }
 }

@@ -1,5 +1,3 @@
-using DomainDrivenDesign.DomainObjects;
-
 namespace DomainDrivenDesign.DomainObjects
 {
     public class BoolValue : Value<bool>

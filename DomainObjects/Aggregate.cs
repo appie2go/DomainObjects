@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DomainDrivenDesign.DomainObjects
+﻿namespace DomainDrivenDesign.DomainObjects
 {
     /// <summary>
     /// A cluster of domain objects which define a consistency boundary. Protects transactional consistency and protects the business invariants of the domain. Uniquely identified by its id.

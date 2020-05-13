@@ -13,8 +13,8 @@ namespace DomainDrivenDesign.DomainObjects
         }
 
         public override string ToString() => _value.ToString();
-        
-#region Equality
+
+        #region Equality
 
         public static bool operator ==(Value<T> left, Value<T> right)
         {
@@ -32,9 +32,9 @@ namespace DomainDrivenDesign.DomainObjects
         }
 
         public static bool operator !=(Value<T> left, Value<T> right) => !(left == right);
-       
+
         public bool Equals(Value<T> other) => Equals((object)other);
-       
+
         public override bool Equals(object obj)
         {
             if (object.Equals(obj, null))
@@ -57,12 +57,12 @@ namespace DomainDrivenDesign.DomainObjects
         }
 
         public override int GetHashCode() => _value.GetHashCode();
-#endregion
+        #endregion
     }
 
     public class Value<T1, T2> : Value<Tuple<T1, T2>>
     {
-        protected Value(T1 value1, T2 value2) 
+        protected Value(T1 value1, T2 value2)
             : base(new Tuple<T1, T2>(value1, value2))
         {
         }
@@ -72,7 +72,7 @@ namespace DomainDrivenDesign.DomainObjects
 
     public class Value<T1, T2, T3> : Value<Tuple<T1, T2, T3>>
     {
-        protected Value(T1 value1, T2 value2, T3 value3) 
+        protected Value(T1 value1, T2 value2, T3 value3)
             : base(new Tuple<T1, T2, T3>(value1, value2, value3))
         {
         }
@@ -82,7 +82,7 @@ namespace DomainDrivenDesign.DomainObjects
 
     public class Value<T1, T2, T3, T4> : Value<Tuple<T1, T2, T3, T4>>
     {
-        protected Value(T1 value1, T2 value2, T3 value3, T4 value4) 
+        protected Value(T1 value1, T2 value2, T3 value3, T4 value4)
             : base(new Tuple<T1, T2, T3, T4>(value1, value2, value3, value4))
         {
         }
@@ -92,7 +92,7 @@ namespace DomainDrivenDesign.DomainObjects
 
     public class Value<T1, T2, T3, T4, T5> : Value<Tuple<T1, T2, T3, T4, T5>>
     {
-        protected Value(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5) 
+        protected Value(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5)
             : base(new Tuple<T1, T2, T3, T4, T5>(value1, value2, value3, value4, value5))
         {
         }
@@ -102,7 +102,7 @@ namespace DomainDrivenDesign.DomainObjects
 
     public class Value<T1, T2, T3, T4, T5, T6> : Value<Tuple<T1, T2, T3, T4, T5, T6>>
     {
-        protected Value(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6) 
+        protected Value(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6)
             : base(new Tuple<T1, T2, T3, T4, T5, T6>(value1, value2, value3, value4, value5, value6))
         {
         }
@@ -112,7 +112,7 @@ namespace DomainDrivenDesign.DomainObjects
 
     public class Value<T1, T2, T3, T4, T5, T6, T7> : Value<Tuple<T1, T2, T3, T4, T5, T6, T7>>
     {
-        protected Value(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7) 
+        protected Value(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7)
             : base(new Tuple<T1, T2, T3, T4, T5, T6, T7>(value1, value2, value3, value4, value5, value6, value7))
         {
         }

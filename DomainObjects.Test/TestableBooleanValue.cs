@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DomainDrivenDesign.DomainObjects.Test
+﻿namespace DomainDrivenDesign.DomainObjects.Test
 {
     public class TestableBooleanValue : BoolValue
     {
