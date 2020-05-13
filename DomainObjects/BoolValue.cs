@@ -1,5 +1,8 @@
 namespace DomainDrivenDesign.DomainObjects
 {
+    /// <summary>
+    /// An immutable boolean object. 
+    /// </summary>
     public class BoolValue : Value<bool>
     {
         private readonly bool _value;

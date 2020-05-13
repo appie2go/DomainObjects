@@ -2,6 +2,9 @@
 
 namespace DomainDrivenDesign.DomainObjects
 {
+    /// <summary>
+    /// An immutable object. 
+    /// </summary>
     public class ComparableValue<T> : Value<T>, IComparable<ComparableValue<T>>, IComparable where T : IComparable<T>
     {
         private readonly T _value;
