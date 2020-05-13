@@ -3,7 +3,7 @@
 namespace DomainDrivenDesign.DomainObjects
 {
     /// <summary>
-    /// A cluster of domain objects that are mutable. Uniquely identified by id.
+    /// A cluster of domain objects that are mutable. Identified by id.
     /// </summary>
     /// <typeparam name="T">The type of the entity/The type that implements this class.</typeparam>
     /// <typeparam name="TKey">The type that is used to identify this entity.</typeparam>
@@ -68,7 +68,7 @@ namespace DomainDrivenDesign.DomainObjects
     }
 
     /// <summary>
-    /// A cluster of domain objects that are mutable. Uniquely identified by id.
+    /// A cluster of domain objects that are mutable. Identified by id.
     /// </summary>
     /// <typeparam name="T">The type of the entity/The type that implements this class.</typeparam>
     public class Entity<T> where T : Entity<T>
