@@ -18,7 +18,7 @@ namespace DomainDrivenDesign.DomainObjects
             _value = value;
         }
 
-        public override string ToString() => _value.ToString();
+        public override string ToString() => _value?.ToString();
 
         #region Equality
 
