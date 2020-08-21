@@ -1,3 +1,5 @@
+using System;
+
 namespace DomainDrivenDesign.DomainObjects
 {
     /// <summary>
@@ -12,36 +14,21 @@ namespace DomainDrivenDesign.DomainObjects
             _value = value;
         }
 
-        public static bool operator ==(BoolValue left, bool right)
-        {
-            return left?._value == right;
-        }
+        public static bool operator ==(BoolValue left, bool right) => AreEqual(left, right);
 
-        public static bool operator !=(BoolValue left, bool right)
-        {
-            return !(left == right);
-        }
+        public static bool operator !=(BoolValue left, bool right) => !AreEqual(left, right);
 
-        public static bool operator ==(bool right, BoolValue left)
-        {
-            return left == right; // go to the overload
-        }
+        public static bool operator ==(bool right, BoolValue left) => AreEqual(left, right);
 
-        public static bool operator !=(bool right, BoolValue left)
-        {
-            return left != right; // go to the overload
-        }
+        public static bool operator !=(bool right, BoolValue left) => !AreEqual(left, right);
 
-        public static implicit operator bool(BoolValue usedForFederation)
-        {
-            return usedForFederation._value;
-        }
+        private static bool AreEqual(BoolValue a, bool b) => a != null && a._value == b;
 
         public override bool Equals(object obj)
         {
-            return obj is BoolValue value &&
-                   base.Equals(obj) &&
-                   _value == value._value;
+            return obj != null
+                   && obj is BoolValue boolValue
+                   && boolValue._value == _value;
         }
 
         public override int GetHashCode()
@@ -51,5 +38,25 @@ namespace DomainDrivenDesign.DomainObjects
             hashCode = hashCode * -1521134295 + _value.GetHashCode();
             return hashCode;
         }
+        
+        
+
+        /// <summary>
+        /// Converts a boolValue to a boolean
+        /// </summary>
+        /// <param name="value">The boolvalue to convert</param>
+        /// <returns>A boolean value</returns>
+        public static explicit operator bool(BoolValue value)
+        {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value), "Cannot convert NULL to a boolean value.");
+            }
+
+            return value.ToBool();
+        }
+
+        public virtual bool ToBool() => _value;
+
     }
 }

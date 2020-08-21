@@ -1,29 +1,61 @@
 ﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DomainDrivenDesign.DomainObjects.Test
+namespace DomainDrivenDesign.DomainObjects.Test.BoolValueTests
 {
     [TestClass]
-    public class BoolValueTests
+    public class CompareTest
     {
+        [TestMethod]
+        public void WhenLeftNull_ShouldBeFalse()
+        {
+            // Arrange
+            TestableBooleanValue value = null;
+
+            // act
+            var actual = value == true;
+
+            // assert
+            actual.Should().BeFalse();
+        }
+        
+        [TestMethod]
+        public void WhenRightNull_ShouldBeFalse()
+        {
+            // Arrange
+            TestableBooleanValue value = null;
+
+            // act
+            var actual = true == value;
+
+            // assert
+            actual.Should().BeFalse();
+        }
+        
         [TestMethod]
         public void WhenTrue_ShouldBeTrue()
         {
+            // Arrange
+            var input = TestableBooleanValue.Create(true);
+
             // act
-            bool value = TestableBooleanValue.Create(true);
+            var actual = (bool) input;
 
             // assert
-            value.Should().BeTrue();
+            actual.Should().BeTrue();
         }
 
         [TestMethod]
         public void WhenFalse_ShouldBeFalse()
         {
+            // Arrange
+            var input = TestableBooleanValue.Create(false);
+            
             // act
-            bool value = TestableBooleanValue.Create(false);
+            var actual = (bool)input;
 
             // assert
-            value.Should().BeFalse();
+            actual.Should().BeFalse();
         }
 
         [TestMethod]
@@ -31,7 +63,7 @@ namespace DomainDrivenDesign.DomainObjects.Test
         {
             // arrange
             var a = TestableBooleanValue.Create(true);
-            var b = true;
+            const bool b = true;
 
             // act
             var actual = a == b;
@@ -44,7 +76,7 @@ namespace DomainDrivenDesign.DomainObjects.Test
         public void WhenComparingTrueToBooleanValueTrue_ShouldBeEqual()
         {
             // arrange
-            var a = true;
+            const bool a = true;
             var b = TestableBooleanValue.Create(true);
 
             // act
@@ -59,7 +91,7 @@ namespace DomainDrivenDesign.DomainObjects.Test
         {
             // arrange
             var a = TestableBooleanValue.Create(true);
-            var b = false;
+            const bool b = false;
 
             // act
             var actual = a == b;
@@ -72,7 +104,7 @@ namespace DomainDrivenDesign.DomainObjects.Test
         public void WhenComparingFalseToBooleanValueTrue_ShouldNotBeEqual()
         {
             // arrange
-            var a = false;
+            const bool a = false;
             var b = TestableBooleanValue.Create(true);
 
             // act
