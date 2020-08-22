@@ -33,13 +33,122 @@ namespace DomainDrivenDesign.DomainObjects.Test.BoolValueTests
         }
         
         [TestMethod]
+        public void WhenLeftNullRightNotNull_ShouldBeTrue()
+        {
+            // Arrange
+            var b = TestableBooleanValue.Create(true);
+
+            // act
+            var actual = null == b;
+
+            // assert
+            actual.Should().BeFalse();
+        }
+        
+        [TestMethod]
+        public void WhenLeftNotNullRightNull_ShouldBeFalse()
+        {
+            // Arrange
+            var a = TestableBooleanValue.Create(true);
+
+            // act
+            var actual = a == null;
+
+            // assert
+            actual.Should().BeFalse();
+        }
+
+        [TestMethod]
+        public void WhenObjectOfDifferentBooleanValueType_ShouldBeFalse()
+        {
+            // Arrange
+            var a = TestableBooleanValue.Create(true);
+            var b = AnotherTestableBooleanValue.Create(true);
+            
+            // Act
+            var actual = a == b;
+
+            // Assert
+            actual.Should().BeFalse();
+        }
+
+        [TestMethod]
+        public void WhenObjectOfDifferentBooleanValueType_ShouldBeTrue()
+        {
+            // Arrange
+            var a = TestableBooleanValue.Create(true);
+            var b = AnotherTestableBooleanValue.Create(true);
+            
+            // Act
+            var actual = a != b;
+
+            // Assert
+            actual.Should().BeTrue();
+        }
+        
+        [TestMethod]
+        public void WhenObjectOfDifferentType_ShouldBeFalse()
+        {
+            // Arrange
+            var a = TestableBooleanValue.Create(true);
+            var b = new object();
+            
+            // Act
+            var actual = a == b;
+
+            // Assert
+            actual.Should().BeFalse();
+        }
+
+        [TestMethod]
+        public void WhenObjectOfDifferentType_ShouldBeTrue()
+        {
+            // Arrange
+            var a = TestableBooleanValue.Create(true);
+            var b = new object();
+            
+            // Act
+            var actual = a != b;
+
+            // Assert
+            actual.Should().BeTrue();
+        }
+
+
+        [TestMethod]
+        public void WhenLeftNullRightNotNull_ShouldBeFalse()
+        {
+            // Arrange
+            TestableBooleanValue a = null;
+
+            // act
+            var actual = a != null;
+
+            // assert
+            actual.Should().BeFalse();
+        }
+        
+        [TestMethod]
+        public void WhenLeftNotNullRightNull_ShouldBeTrue()
+        {
+            // Arrange
+            var a = TestableBooleanValue.Create(true);
+
+            // act
+            var actual = a != null;
+
+            // assert
+            actual.Should().BeTrue();
+        }
+        
+        [TestMethod]
         public void WhenTrue_ShouldBeTrue()
         {
             // Arrange
             var input = TestableBooleanValue.Create(true);
 
             // act
-            var actual = (bool) input;
+            bool actual = input;
 
             // assert
             actual.Should().BeTrue();
@@ -52,7 +161,7 @@ namespace DomainDrivenDesign.DomainObjects.Test.BoolValueTests
             var input = TestableBooleanValue.Create(false);
             
             // act
-            var actual = (bool)input;
+            bool actual = input;
 
             // assert
             actual.Should().BeFalse();

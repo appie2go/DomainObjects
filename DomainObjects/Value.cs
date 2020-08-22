@@ -27,12 +27,12 @@ namespace DomainDrivenDesign.DomainObjects
         /// </summary>
         public static bool operator ==(Value<T> left, Value<T> right)
         {
-            if (object.Equals(left, null) && object.Equals(right, null))
+            if (Equals(left, null) && Equals(right, null))
             {
                 return true;
             }
 
-            if (object.Equals(left, null) || object.Equals(right, null))
+            if (Equals(left, null) || Equals(right, null))
             {
                 return false;
             }
