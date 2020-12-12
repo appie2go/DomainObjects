@@ -3,17 +3,17 @@
     /// <summary>
     /// A cluster of domain objects which define a consistency boundary. Protects transactional consistency and protects the business invariants of the domain. Uniquely identified by its id.
     /// </summary>
-    /// <typeparam name="T">The type of the aggregate/The type that implements this class.</typeparam>
-    /// <typeparam name="TKey">The type that is used to identify this aggregate.</typeparam>
-    public class Aggregate<T, TKey> : Entity<T, TKey>, IEntity<T>
-        where T : Entity<T, TKey>
-        where TKey : Id, IId<T>
+    /// <typeparam name="TAggregate">The type of the aggregate/The type that implements this class.</typeparam>
+    /// <typeparam name="TKeyType">The type that is used to identify this aggregate.</typeparam>
+    public class Aggregate<TAggregate, TKeyType> : Entity<TAggregate, TKeyType>, IEntity<TAggregate>
+        where TAggregate : Entity<TAggregate, TKeyType>
+        where TKeyType : Id, IId<TAggregate>
     {
         /// <summary>
-        /// Creates a new instance of the Aggregate<<typeparamref name="T"/>, <typeparamref name="TKey"/>> class
+        /// Creates a new instance of the Aggregate<<typeparamref name="TAggregate"/>, <typeparamref name="TKeyType"/>> class
         /// </summary>
         /// <param name="id">A unique value that identifies this object.</param>
-        protected Aggregate(TKey id) : base(id)
+        protected Aggregate(TKeyType id) : base(id)
         {
         }
     }
