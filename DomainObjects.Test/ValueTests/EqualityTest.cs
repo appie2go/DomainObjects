@@ -36,7 +36,21 @@ namespace DomainObjects.Test.ValueTests
             // Assert
             actual.Should().BeTrue();
         }
+        
+        [TestMethod]
+        public void WhenNull_ShouldNotEqual()
+        {
+            // arrange
+            var value = _fixture.Create<string>();
+            var a = new TestableValue<string>(value);
+            
+            // act
+            var actual = a == null;
 
+            // Assert
+            actual.Should().BeFalse();
+        }
+        
         [TestMethod]
         public void WhenSameValues_ShouldEqual()
         {

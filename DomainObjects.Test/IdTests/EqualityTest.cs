@@ -45,5 +45,31 @@ namespace DomainDrivenDesign.DomainObjects.Test.IdTests
             // assert
             actual.Should().BeTrue();
         }
+
+        [TestMethod]
+        public void WhenNull_ShouldNotBeEqual()
+        {
+            // Arrange
+            var a = Id<TestableEntity>.Create(Guid.NewGuid());
+            
+            // Act
+            var actual = a == null;
+            
+            // Assert
+            actual.Should().BeFalse();
+        }
+
+        [TestMethod]
+        public void WhenNull_ShouldBeUnEqual()
+        {
+            // Arrange
+            var a = Id<TestableEntity>.Create(Guid.NewGuid());
+            
+            // Act
+            var actual = a != null;
+            
+            // Assert
+            actual.Should().BeTrue();
+        }
     }
 }

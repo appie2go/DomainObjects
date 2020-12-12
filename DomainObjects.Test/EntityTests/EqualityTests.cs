@@ -53,5 +53,19 @@ namespace DomainDrivenDesign.DomainObjects.Test.EntityTests
             // assert
             actual.Should().BeTrue();
         }
+        
+        [TestMethod]
+        public void WhenNull_ShouldNotCompare()
+        {
+            // arrange
+            var id = _fixture.Create<Id<TestableEntity>>();
+            var a = TestableEntity.Create(id, _fixture.Create<Name>());
+
+            // act
+            var actual = a == null;
+
+            // assert
+            actual.Should().BeFalse();
+        }
     }
 }

@@ -52,7 +52,6 @@ namespace DomainObjects.Test.ValueTests
             actual.Should().BeFalse();
         }
 
-
         [TestMethod]
         public void WhenDifferentValues_ShouldNotEqualObject()
         {
@@ -110,16 +109,29 @@ namespace DomainObjects.Test.ValueTests
             // Assert
             actual.Should().BeTrue();
         }
+        
+        [TestMethod]
+        public void WhenNull_ShouldBeUnEqual()
+        {
+            // arrange
+            var value = _fixture.Create<string>();
+            var a = new TestableValue<string>(value);
 
+            // act
+            var actual = a != null;
+
+            // Assert
+            actual.Should().BeTrue();
+        }
+        
         [TestMethod]
         public void WhenComparingToNull_ShouldBeUnequal()
         {
             // arrange
             var a = new TestableValue<string>(_fixture.Create<string>());
-            TestableValue<string> b = null;
 
             // act
-            var actual = a == b;
+            var actual = a == null;
 
             // Assert
             actual.Should().BeFalse();
