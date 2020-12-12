@@ -8,7 +8,7 @@
         {
             return new TestableEntity(id, number);
         }
-
+        
         private TestableEntity(Id<TestableEntity> id, Name number) : base(id)
         {
             Name = number;

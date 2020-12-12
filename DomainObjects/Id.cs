@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace DomainDrivenDesign.DomainObjects
 {
@@ -76,7 +77,8 @@ namespace DomainDrivenDesign.DomainObjects
     /// A type used to identify an entity or an aggregate, uses a globally unique identifier (Guid) as a value.
     /// </summary>
     /// <typeparam name="T">Identifies the type of entity/aggregate this Id refers to.</typeparam>
-    public class Id<T> : Id where T : Entity<T>
+    [Serializable]
+    public sealed class Id<T> : Id, ISerializable where T : Entity<T>
     {
         private readonly Guid _id;
 
@@ -112,9 +114,26 @@ namespace DomainDrivenDesign.DomainObjects
         /// </summary>
         /// <returns>A guid.</returns>
         public Guid ToGuid() => _id;
+
+#region Serialization        
+        /// <summary>
+        /// Creates a new instance of the Value class. Use this constructor to support (de)serialization.
+        /// </summary>
+        protected Id(SerializationInfo info, StreamingContext context)
+        {
+            var value = info.GetValue("id", _id.GetType()) ?? Guid.Empty;
+            _id = (Guid) value;
+        }
+        
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("id", _id);
+        }
+#endregion
     }
 
-    public class Id<T, TType> : Id, IId<T> where T : IEntity<T>
+    [Serializable]
+    public class Id<T, TType> : Id, ISerializable, IId<T> where T : IEntity<T>
     {
         private readonly TType _id;
 
@@ -130,5 +149,21 @@ namespace DomainDrivenDesign.DomainObjects
         protected override Type EntityType => typeof(T);
 
         protected override object Value => _id;
+        
+#region Serialization        
+        /// <summary>
+        /// Creates a new instance of the Value class. Use this constructor to support (de)serialization.
+        /// </summary>
+        protected Id(SerializationInfo info, StreamingContext context)
+        {
+            var value = info.GetValue("id", _id.GetType());
+            _id = value == null ? default : (TType) value;
+        }
+        
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("id", _id);
+        }
+#endregion
     }
 }

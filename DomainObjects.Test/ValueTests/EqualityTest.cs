@@ -1,4 +1,5 @@
 using AutoFixture;
+using DomainDrivenDesign.DomainObjects.Test;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
