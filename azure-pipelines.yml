@@ -15,6 +15,11 @@ stages:
   
   - job: Build
     steps:
+    - task: UseDotNet@2
+      inputs:
+        packageType: 'sdk'
+        version: '5.0.x'
+
     - task: DotNetCoreCLI@2
       displayName: 'Test the new version!'
       inputs:
