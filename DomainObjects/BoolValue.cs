@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.Serialization;
 
 namespace DomainDrivenDesign.DomainObjects
 {
@@ -12,6 +13,15 @@ namespace DomainDrivenDesign.DomainObjects
         protected BoolValue(bool value) : base(value)
         {
             _value = value;
+        }
+        
+        /// <summary>
+        /// Creates a new instance of the BoolValue class. Use this constructor to support (de)serialization.
+        /// </summary>
+        protected BoolValue(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+            var value = info.GetValue("values", typeof(bool));
+            _value = value != null && (bool) value;
         }
 
         public static bool operator ==(BoolValue left, BoolValue right) => AreEqual(left, right);

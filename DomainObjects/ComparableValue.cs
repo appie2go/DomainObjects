@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace DomainDrivenDesign.DomainObjects
 {
@@ -12,6 +13,15 @@ namespace DomainDrivenDesign.DomainObjects
         protected ComparableValue(T value) : base(value)
         {
             _value = value;
+        }
+        
+        /// <summary>
+        /// Creates a new instance of the ComparableValue class. Use this constructor to support (de)serialization.
+        /// </summary>
+        protected ComparableValue(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+            var value = info.GetValue("values", typeof(T));
+            _value = value == default ? default : (T) value;
         }
 
         public static bool operator <(ComparableValue<T> left, ComparableValue<T> right)
