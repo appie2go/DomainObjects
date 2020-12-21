@@ -335,4 +335,4 @@ public class BookAggregate : Aggregate<BookAggregate, BookId>
 Use this repository as a reference. See how to use the DomainDrivenDesign.DomainObjects NuGet package [in this solution](https://github.com/appie2go/steal-this-code), in this [project](https://github.com/appie2go/steal-this-code/tree/master/Source/Dispatching).
 
 ## Sponsor me
-[Buy me a coffee!](buymeacoffee.com/appie2go)
+[Buy me a coffee!](https://buymeacoffee.com/appie2go)
